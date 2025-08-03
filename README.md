@@ -4,7 +4,7 @@
 [![Multiplatform](https://img.shields.io/badge/Multiplatform-Native%20%7C%20JVM-green.svg)](https://kotlinlang.org/docs/multiplatform.html)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-AIMatrix CLI is a powerful, multi-provider AI command-line interface built with Kotlin Multiplatform. It provides 100% feature parity with Google's Gemini CLI while adding support for multiple LLM providers, intelligent model selection, and advanced performance optimization.
+AIMatrix CLI is a powerful, multi-provider AI command-line interface built with Kotlin Multiplatform. It provides 100% feature parity with Google's Gemini CLI while adding support for multiple LLM providers, intelligent model selection, advanced performance optimization, and comprehensive AMX-Hub integration for enterprise AI agent management.
 
 ## 🚀 Features
 
@@ -25,6 +25,13 @@ AIMatrix CLI is a powerful, multi-provider AI command-line interface built with 
 1. **Command Line Interface (CLI)**: Traditional command-line with subcommands
 2. **Terminal User Interface (TUI)**: Interactive text-based interface
 3. **Graphical User Interface (GUI)**: Desktop application with Compose Multiplatform
+
+### AMX-Hub Integration
+- **GitHub-like CLI Experience**: Manage AI workspaces and agents like repos
+- **Workspace Management**: Create, clone, and collaborate on AI workspaces
+- **Agent Orchestration**: Deploy, monitor, and control AI agents
+- **Interactive Chat**: Real-time conversations with deployed agents
+- **Team Collaboration**: Share workspaces and agents with your team
 
 ### Advanced Features
 - **LSP Integration**: Language Server Protocol for code intelligence
@@ -82,36 +89,50 @@ java -jar build/libs/amx-master-agent.jar
 
 ## Usage
 
-### Basic Commands
+### AMX-Hub Commands (GitHub-like CLI)
 
 ```bash
-# Start interactive mode with intelligent model selection
-aimatrix
+# Authentication
+amx hub auth login                    # Login to AMX-Hub
+amx hub auth status                   # Check auth status
+amx hub auth logout                   # Logout
 
-# Start with specific UI mode
-aimatrix --tui  # Terminal UI (default)
-aimatrix --gui  # Graphical UI
+# Workspace Management
+amx hub workspace list                # List your workspaces
+amx hub workspace create my-ai-lab    # Create new workspace
+amx hub workspace clone workspace-id  # Clone workspace locally
+amx hub workspace delete workspace-id # Delete workspace
 
+# Agent Management
+amx hub agent list                    # List all agents
+amx hub agent create my-assistant     # Create new agent
+amx hub agent start agent-id          # Start an agent
+amx hub agent stop agent-id           # Stop an agent
+amx hub agent chat agent-id           # Chat with agent
+
+# Interactive chat with an agent
+amx hub agent chat agent-123
+> Hello! Can you help me with Python?
+< Of course! I'd be happy to help you with Python...
+```
+
+### Direct LLM Commands
+
+```bash
 # Chat with automatic model selection
-aimatrix chat "Explain quantum computing"
+amx chat "Explain quantum computing"
 
 # Chat with specific model
-aimatrix chat --model claude-3-opus "Review this code for security issues"
+amx chat --model claude-3-opus "Review this code for security issues"
 
-# View model performance analytics
-aimatrix analytics show
+# Interactive mode
+amx chat --provider openai
 
-# See model recommendations for different tasks
-aimatrix models recommend
+# View configuration
+amx config --list
 
-# Launch an agent
-aimatrix agent launch -n "code-analyzer" -c agent-config.yaml
-
-# List running agents
-aimatrix agent list
-
-# Run a workflow
-aimatrix workflow run -f workflow.yaml
+# Check status
+amx status
 ```
 
 ### Agent Configuration

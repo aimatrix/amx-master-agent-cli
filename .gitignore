@@ -1,0 +1,31 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+temp_backup/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# JVM artifacts
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Native compilation
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Temporary files
+*.tmp
+*.temp
